@@ -1,10 +1,10 @@
 from collections import defaultdict
-from typing import List, Tuple
+from typing import List, Tuple, Dict, Any
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 
 
-def calculate_inertia(embeddings, clusters):
+def calculate_inertia(embeddings:List[List[float]], clusters:List[int])->List[float]:
     scaler = StandardScaler()
     embeddings_scaled = scaler.fit_transform(embeddings)
 
@@ -12,18 +12,16 @@ def calculate_inertia(embeddings, clusters):
 
     for k in clusters:
         kmeans = KMeans(n_clusters=k, random_state=0).fit(embeddings_scaled)
-        print("k:", k, " inertia:", kmeans.inertia_)
         inertia.append(kmeans.inertia_)
 
     return inertia
 
-#-> defaultdict[int, Tuple[any, List[float]]]
-def get_groups(number_of_clusters: int, node_embeddings: List[Tuple[any, List[float]]]) :
+def get_groupings(number_of_clusters: int, node_embeddings: List[Tuple[any, List[float]]]) -> Dict[Any, list]:
     scaler = StandardScaler()
     embeddings = [embedding for node, embedding in node_embeddings]
     embeddings_scaled = scaler.fit_transform(embeddings)
-    kmeans: KMeans = KMeans(n_clusters=number_of_clusters, random_state=0).fit(embeddings_scaled)
 
+    kmeans: KMeans = KMeans(n_clusters=number_of_clusters, random_state=0).fit(embeddings_scaled)
     kmeans_labels = kmeans.labels_
 
     classes_dict = defaultdict(list)
