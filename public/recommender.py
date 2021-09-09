@@ -122,7 +122,7 @@ def get_node_pair_sim_output(node_pair_sim: NodePairSimilarity) -> List[List[str
 
     output.append(["id: {id}".format(id=id1), "id: {id}".format(id=id2), "STATS"])
     output.append(["title: {title}".format(title=title1), "title: {title}".format(title=title2)])
-    output.append(["", "", "similarity:{sim}".format(sim=similarity)])
+    output.append(["", "", "similarity:{sim:.4f}".format(sim=similarity)])
     output.append(["\n"])
 
     output.extend(form_chunk_output(description1, description2))

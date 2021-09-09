@@ -1,4 +1,4 @@
-#Physics paper recommender
+# Physics paper recommender
 
 This project is part of blog post on topic of `Recommendation System Using 
 Online Node2Vec with Memgraph MAGE`. 
@@ -7,14 +7,14 @@ Online Node2Vec with Memgraph MAGE`.
 - An installation of [Memgraph Lab](https://memgraph.com/product/lab)  or 
 usage of Memgraph's command-line tool, [mgconsole](https://docs.memgraph.com/memgraph/connect-to-memgraph/methods/mgconsole/), which is installed together with Memgraph.
 
-#Setup
+# Setup
 In order to prepare this repo, run:
 
 ```bash
 pip3 install -r requirements.txt
 ```
 
-#Prechecks
+# Prechecks
 File `public/recommender.py` assumes existence of node2vec_online module, and calculated node embeddings.
 If this is not prepared, follow blog post to learn how.
 
@@ -24,7 +24,7 @@ following command inside `Memgraph Lab` or `mgconsole`:
 CALL node2vec_online.get() YIELD *;
 ```
 
-#Commands
+# Commands
 
 Position yourself inside `public` repo
 
